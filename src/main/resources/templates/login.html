@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <!--/* ログイン失敗/ログアウトはgetパラメータにステータスが渡されているので、Thymeleafではparamから取得 */-->
+    <div th:if="${param.logout}">
+            You have been logged out.
+    </div>
+    <div th:if="${param.error}">
+            Invalid username and password.
+    </div>
+    
+    <!--/* 「/sign_in」がログイン判定処理を呼び出すViewNameとなっている */-->
+	<form th:action="@{/sign_in}" method="post">
+	    <input type="text" name="username">user_name
+	    <br/>
+	    <input type="password" name="password">password
+	    
+	    <br/>
+	    
+	    <input type="submit" value="Login">
+	</form>
+</body>
+</html>
